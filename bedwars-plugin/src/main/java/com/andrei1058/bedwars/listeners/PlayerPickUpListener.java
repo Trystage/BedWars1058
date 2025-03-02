@@ -38,6 +38,10 @@ public class PlayerPickUpListener implements Listener {
                     event.getItem().remove();
                     event.setCancelled(true);
                     break;
+                case EXP_BOTTLE:
+                    xps = event.getItem().getItemStack().getAmount() * 10;
+                    event.getItem().remove();
+                    event.setCancelled(true);
                 default:
                     return;
             }
