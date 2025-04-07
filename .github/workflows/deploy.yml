@@ -41,3 +41,5 @@ jobs:
           generate_release_notes: true
           name: ${{env.UPDATE_VERSION}}-xp
           tag_name: ${{env.UPDATE_VERSION}}-xp
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
