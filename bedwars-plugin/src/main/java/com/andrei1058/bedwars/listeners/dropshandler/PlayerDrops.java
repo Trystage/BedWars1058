@@ -148,8 +148,8 @@ public class PlayerDrops {
                     String msg = "";
                     int xp = victim.getLevel();
                     if (xp != 0){
-                        msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_GOLD).replace("{meaning}", xp == 1 ?
-                                getMsg(killer, Messages.MEANING_GOLD_SINGULAR) : getMsg(killer, Messages.MEANING_GOLD_PLURAL));
+                        msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_EMERALD).replace("{meaning}", xp == 1 ?
+                                getMsg(killer, Messages.MEANING_XPLEVEL_SINGULAR) : getMsg(killer, Messages.MEANING_XPLEVEL_PLURAL));
                     }
                     killer.giveExpLevels(xp / 2);
                     victim.setLevel(xp / 2);
