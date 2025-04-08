@@ -229,7 +229,7 @@ public class Interact implements Listener {
             if (a != null){
                 if(a.isPlayer(p)){
                     if (b.getType() == Material.CHEST){
-                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand)) {
+                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand) && inHand.getType() !=  Material.SHEARS) {
                             if (a.isSpectator(p) || a.getRespawnSessions().containsKey(p)) {
                                 e.setCancelled(true);
                                 return;
@@ -263,7 +263,7 @@ public class Interact implements Listener {
                         }
                     }
                     if (b.getType() == Material.ENDER_CHEST){
-                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand)) {
+                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand) && inHand.getType() !=  Material.SHEARS) {
                             if (a.isSpectator(p) || a.getRespawnSessions().containsKey(p)) {
                                 e.setCancelled(true);
                                 return;
