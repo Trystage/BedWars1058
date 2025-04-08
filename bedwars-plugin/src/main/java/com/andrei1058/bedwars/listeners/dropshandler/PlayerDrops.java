@@ -147,12 +147,13 @@ public class PlayerDrops {
                 if(yml.getBoolean("xp")){
                     String msg = "";
                     int xp = victim.getLevel();
-                    if (xp != 0){
-                        msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_EMERALD).replace("{meaning}", xp == 1 ?
+                    int xpAmount = 3 * (xp / 4);
+                    if (xpAmount != 0){
+                        msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_EMERALD).replace("{meaning}", xpAmount == 1 ?
                                 getMsg(killer, Messages.MEANING_XPLEVEL_SINGULAR) : getMsg(killer, Messages.MEANING_XPLEVEL_PLURAL));
                     }
-                    killer.giveExpLevels(xp / 2);
-                    victim.setLevel(xp / 2);
+                    killer.giveExpLevels(xpAmount);
+                    victim.setLevel(xp / 4);
                     for (ItemStack i : inventory){
                         if(i.getType() == Material.DIAMOND){
                             killer.getInventory().addItem(i);
@@ -163,14 +164,14 @@ public class PlayerDrops {
                             }
                         }
                     }
-                    killer.sendMessage(msg.replace("{amount}", String.valueOf(xp)));
+                    killer.sendMessage(msg.replace("{amount}", String.valueOf(xpAmount)));
                     for (Map.Entry<Material, Integer> entry : materialDrops.entrySet()) {
                         int amount = entry.getValue();
                         if (Objects.requireNonNull(entry.getKey()) == Material.DIAMOND) {
                             msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_DIAMOND).replace("{meaning}", amount == 1 ?
                                     getMsg(killer, Messages.MEANING_DIAMOND_SINGULAR) : getMsg(killer, Messages.MEANING_DIAMOND_PLURAL));
                         }
-                        killer.sendMessage(msg.replace("{amount}", String.valueOf(xp)));
+                        killer.sendMessage(msg.replace("{amount}", String.valueOf(amount)));
                     }
                 }else {
                     for (ItemStack i : inventory) {
