@@ -37,6 +37,7 @@ import org.bukkit.util.Vector;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import static com.andrei1058.bedwars.BedWars.nms;
 import static com.andrei1058.bedwars.api.language.Language.getMsg;
@@ -144,7 +145,12 @@ public class PlayerDrops {
                 if (arena.isReSpawning(killer)) return true;
                 Map<Material, Integer> materialDrops = new HashMap<>();
                 if(yml.getBoolean("xp")){
+                    String msg = "";
                     int xp = victim.getLevel();
+                    if (xp != 0){
+                        msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_GOLD).replace("{meaning}", xp == 1 ?
+                                getMsg(killer, Messages.MEANING_GOLD_SINGULAR) : getMsg(killer, Messages.MEANING_GOLD_PLURAL));
+                    }
                     killer.giveExpLevels(xp / 2);
                     victim.setLevel(xp / 2);
                     for (ItemStack i : inventory){
@@ -156,6 +162,15 @@ public class PlayerDrops {
                                 materialDrops.put(i.getType(), i.getAmount());
                             }
                         }
+                    }
+                    killer.sendMessage(msg.replace("{amount}", String.valueOf(xp)));
+                    for (Map.Entry<Material, Integer> entry : materialDrops.entrySet()) {
+                        int amount = entry.getValue();
+                        if (Objects.requireNonNull(entry.getKey()) == Material.DIAMOND) {
+                            msg = getMsg(killer, Messages.PLAYER_DIE_REWARD_DIAMOND).replace("{meaning}", amount == 1 ?
+                                    getMsg(killer, Messages.MEANING_DIAMOND_SINGULAR) : getMsg(killer, Messages.MEANING_DIAMOND_PLURAL));
+                        }
+                        killer.sendMessage(msg.replace("{amount}", String.valueOf(xp)));
                     }
                 }else {
                     for (ItemStack i : inventory) {
