@@ -80,16 +80,24 @@ public class TeamAssigner implements ITeamAssigner {
 
         for (Player remaining : arena.getPlayers()) {
             if (skip.contains(remaining)) continue;
+            int minSize = Integer.MAX_VALUE;
+            ITeam targetTeam = null;
             for (ITeam team : arena.getTeams()) {
                 if (team.getMembers().size() < arena.getMaxInTeam()) {
-                    TeamAssignEvent e = new TeamAssignEvent(remaining, team, arena);
-                    Bukkit.getPluginManager().callEvent(e);
-                    if (!e.isCancelled()) {
-                        remaining.closeInventory();
-                        team.addPlayers(remaining);
+                    if (team.getMembers().size() < minSize) {
+                        minSize = team.getMembers().size();
+                        targetTeam = team;
                     }
-                    break;
                 }
+            }
+            if (targetTeam != null) {
+                TeamAssignEvent e = new TeamAssignEvent(remaining, targetTeam, arena);
+                Bukkit.getPluginManager().callEvent(e);
+                if (!e.isCancelled()) {
+                    remaining.closeInventory();
+                    targetTeam.addPlayers(remaining);
+                }
+                break;
             }
         }
     }
