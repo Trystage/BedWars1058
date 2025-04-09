@@ -74,7 +74,7 @@ public class TeamAssigner implements ITeamAssigner {
                 }
             }
         }
-        List<ITeam> shuffledTeams = new ArrayList<>(arena.getTeams());
+        List<ITeam> shuffledTeams = arena.getTeams();
         Collections.shuffle(shuffledTeams);
         for (Player remaining : arena.getPlayers()) {
             if (skip.contains(remaining)) continue;
