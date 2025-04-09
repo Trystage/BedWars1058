@@ -95,7 +95,6 @@ public class TeamAssigner implements ITeamAssigner {
                     remaining.closeInventory();
                     targetTeam.addPlayers(remaining);
                 }
-                break;
             }
         }
     }
