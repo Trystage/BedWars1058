@@ -28,10 +28,7 @@ import com.andrei1058.bedwars.api.events.gameplay.TeamAssignEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class TeamAssigner implements ITeamAssigner {
 
@@ -77,12 +74,13 @@ public class TeamAssigner implements ITeamAssigner {
                 }
             }
         }
-
+        List<ITeam> shuffledTeams = new ArrayList<>(arena.getTeams());
+        Collections.shuffle(shuffledTeams);
         for (Player remaining : arena.getPlayers()) {
             if (skip.contains(remaining)) continue;
             int minSize = Integer.MAX_VALUE;
             ITeam targetTeam = null;
-            for (ITeam team : arena.getTeams()) {
+            for (ITeam team : shuffledTeams) {
                 if (team.getMembers().size() < arena.getMaxInTeam()) {
                     if (team.getMembers().size() < minSize) {
                         minSize = team.getMembers().size();
