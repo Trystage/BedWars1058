@@ -344,6 +344,11 @@ public abstract class VersionSupport {
     public abstract Material materialEnchantingTable();
 
     /**
+     * Experience bottle material
+     */
+    public abstract Material materialExperienceBottle();
+
+    /**
      * Check if bed
      */
     public boolean isBed(Material material) {

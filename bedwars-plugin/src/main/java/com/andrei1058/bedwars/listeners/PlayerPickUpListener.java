@@ -11,16 +11,15 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
-import static com.andrei1058.bedwars.BedWars.config;
-import static org.bukkit.Material.EMERALD;
-import static org.bukkit.Material.GOLD_INGOT;
+import static com.andrei1058.bedwars.BedWars.*;
 
 public class PlayerPickUpListener implements Listener {
+    private final static Material expBottle = nms.materialExperienceBottle();
     @EventHandler(priority = EventPriority.HIGH)
     public void onPickUp(PlayerPickupItemEvent event){
         Player player = event.getPlayer();
         Material material = event.getItem().getItemStack().getType();
-        int xps = 0;
+        int xps = 1;
         if (Arena.getArenaByPlayer(player).getConfig().getBoolean("xp")) {
             switch (material) {
                 case IRON_INGOT:
@@ -38,12 +37,12 @@ public class PlayerPickUpListener implements Listener {
                     event.getItem().remove();
                     event.setCancelled(true);
                     break;
-                case EXP_BOTTLE:
-                    xps = event.getItem().getItemStack().getAmount() * 10;
-                    event.getItem().remove();
-                    event.setCancelled(true);
                 default:
-                    return;
+                    if (material == expBottle){
+                        xps = event.getItem().getItemStack().getAmount() * 10;
+                        event.getItem().remove();
+                        event.setCancelled(true);
+                    }
             }
             player.giveExpLevels(xps);
             player.playSound(player.getLocation(), Sound.valueOf(BedWars.getForCurrentVersion("SUCCESSFUL_HIT", "ENTITY_EXPERIENCE_ORB_PICKUP", "ENTITY_EXPERIENCE_ORB_PICKUP")), 0.6f, 1.3f);

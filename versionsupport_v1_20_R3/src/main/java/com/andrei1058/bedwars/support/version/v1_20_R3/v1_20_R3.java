@@ -503,6 +503,11 @@ public class v1_20_R3 extends VersionSupport {
     }
 
     @Override
+    public org.bukkit.Material materialExperienceBottle() {
+        return org.bukkit.Material.EXPERIENCE_BOTTLE;
+    }
+
+    @Override
     public org.bukkit.Material woolMaterial() {
         return org.bukkit.Material.WHITE_WOOL;
     }

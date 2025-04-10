@@ -514,6 +514,11 @@ public class v1_12_R1 extends VersionSupport {
     }
 
     @Override
+    public org.bukkit.Material materialExperienceBottle() {
+        return org.bukkit.Material.EXP_BOTTLE;
+    }
+
+    @Override
     public boolean isBed(org.bukkit.Material material) {
         return material == org.bukkit.Material.BED_BLOCK || material == org.bukkit.Material.BED;
     }
