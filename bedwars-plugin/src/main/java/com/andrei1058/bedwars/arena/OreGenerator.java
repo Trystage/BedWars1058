@@ -475,7 +475,7 @@ public class OreGenerator implements IGenerator {
                 ore = new ItemStack(Material.EMERALD);
                 break;
         }
-        lastSpawn = delay;
+        lastSpawn = 0;
     }
 
     @Override

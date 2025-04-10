@@ -64,7 +64,7 @@ public class PlayerDrops {
             // if died by fall damage drop items at location
             if(yml.getBoolean("xp")){
                 int xp = victim.getLevel() /10;
-                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(Material.EXP_BOTTLE, xp));
+                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(nms.materialExperienceBottle(), xp));
             }else {
                 dropItems(victim, inventory);
             }
@@ -74,7 +74,7 @@ public class PlayerDrops {
             // Death without a attacker drops items on the floor
             if(yml.getBoolean("xp")){
                 int xp = victim.getLevel() /10;
-                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(Material.EXP_BOTTLE, xp));
+                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(nms.materialExperienceBottle(), xp));
             }else {
                 dropItems(victim, inventory);
             }
@@ -84,7 +84,7 @@ public class PlayerDrops {
             // If killed by a ironGolem or silverFish drop on floor
             if(yml.getBoolean("xp")){
                 int xp = victim.getLevel() /10;
-                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(Material.EXP_BOTTLE, xp));
+                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(nms.materialExperienceBottle(), xp));
             }else {
                 dropItems(victim, inventory);
             }
@@ -94,7 +94,7 @@ public class PlayerDrops {
             // if is pvp log out drop at disconnect location
             if(yml.getBoolean("xp")){
                 int xp = victim.getLevel() /10;
-                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(Material.EXP_BOTTLE, xp));
+                victim.getLocation().getWorld().dropItemNaturally(victim.getLocation(), new ItemStack(nms.materialExperienceBottle(), xp));
             }else {
                 dropItems(victim, inventory);
             }
@@ -106,7 +106,7 @@ public class PlayerDrops {
                 Location dropsLocation = new Location(victim.getWorld(), victimsTeam.getKillDropsLocation().getBlockX(), victimsTeam.getKillDropsLocation().getY(), victimsTeam.getKillDropsLocation().getZ());
                 if(yml.getBoolean("xp")){
                     int xp = victim.getLevel() /10;
-                    victim.getLocation().getWorld().dropItemNaturally(dropsLocation, new ItemStack(Material.EXP_BOTTLE, xp));
+                    victim.getLocation().getWorld().dropItemNaturally(dropsLocation, new ItemStack(nms.materialExperienceBottle(), xp));
                 }else {
                     victim.getEnderChest().forEach(item -> {
                         if (item != null) {
