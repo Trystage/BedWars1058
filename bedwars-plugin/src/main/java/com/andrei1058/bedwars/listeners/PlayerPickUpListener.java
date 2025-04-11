@@ -14,7 +14,6 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import static com.andrei1058.bedwars.BedWars.*;
 
 public class PlayerPickUpListener implements Listener {
-    private final static Material expBottle = nms.materialExperienceBottle();
     @EventHandler(priority = EventPriority.HIGH)
     public void onPickUp(PlayerPickupItemEvent event){
         Player player = event.getPlayer();
@@ -37,17 +36,16 @@ public class PlayerPickUpListener implements Listener {
                     event.getItem().remove();
                     event.setCancelled(true);
                     break;
-                default:
-                    if (material == nms.materialExperienceBottle()){
-                        xps = event.getItem().getItemStack().getAmount() * 10;
-                        event.getItem().remove();
-                        event.setCancelled(true);
-                    }else{
-                        return;
-                    }
             }
-            player.giveExpLevels(xps);
-            player.playSound(player.getLocation(), Sound.valueOf(BedWars.getForCurrentVersion("SUCCESSFUL_HIT", "ENTITY_EXPERIENCE_ORB_PICKUP", "ENTITY_EXPERIENCE_ORB_PICKUP")), 0.6f, 1.3f);
+            if (material == nms.materialExperienceBottle()){
+                xps = event.getItem().getItemStack().getAmount() * 10;
+                event.getItem().remove();
+                event.setCancelled(true);
+            }
+            if(xps != 0) {
+                player.giveExpLevels(xps);
+                player.playSound(player.getLocation(), Sound.valueOf(BedWars.getForCurrentVersion("SUCCESSFUL_HIT", "ENTITY_EXPERIENCE_ORB_PICKUP", "ENTITY_EXPERIENCE_ORB_PICKUP")), 0.6f, 1.3f);
+            }
         }
     }
 }
