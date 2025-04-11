@@ -74,10 +74,16 @@ public class FireballListener implements Listener {
             double y = normalizedVector.getY();
             if(y < 0 ) y += 0.2;
             if(y <= 0.3) {
-                y = fireballVertical*1.5; // kb for not jumping
+                if(y <= -0.2){
+                    y = fireballVertical*0.5;
+                }
+                else {
+                    y = fireballVertical * 1.5; // kb for not jumping
+                }
             } else {
                 y = y*fireballVertical*1.5; // kb for jumping
             }
+
             player.setVelocity(horizontalVector.setY(y));
 
             LastHit lh = LastHit.getLastHit(player);
