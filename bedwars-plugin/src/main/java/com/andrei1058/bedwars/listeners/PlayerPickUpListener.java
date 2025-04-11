@@ -20,6 +20,11 @@ public class PlayerPickUpListener implements Listener {
         Material material = event.getItem().getItemStack().getType();
         int xps = 0;
         if (Arena.getArenaByPlayer(player).getConfig().getBoolean("xp")) {
+            if (material == nms.materialExperienceBottle()){
+                xps = event.getItem().getItemStack().getAmount() * 10;
+                event.getItem().remove();
+                event.setCancelled(true);
+            }
             switch (material) {
                 case IRON_INGOT:
                     xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_IRON_PRICE);
@@ -36,11 +41,6 @@ public class PlayerPickUpListener implements Listener {
                     event.getItem().remove();
                     event.setCancelled(true);
                     break;
-            }
-            if (material == nms.materialExperienceBottle()){
-                xps = event.getItem().getItemStack().getAmount() * 10;
-                event.getItem().remove();
-                event.setCancelled(true);
             }
             if(xps != 0) {
                 player.giveExpLevels(xps);
