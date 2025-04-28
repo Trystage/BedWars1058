@@ -20,27 +20,30 @@ public class PlayerPickUpListener implements Listener {
         Material material = event.getItem().getItemStack().getType();
         int xps = 0;
         if (Arena.getArenaByPlayer(player).getConfig().getBoolean("xp")) {
-            if (material == nms.materialExperienceBottle()){
+            if (nms.materialExperienceBottle().equals(material)){
                 xps = event.getItem().getItemStack().getAmount() * 10;
                 event.getItem().remove();
                 event.setCancelled(true);
             }
-            switch (material) {
-                case IRON_INGOT:
-                    xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_IRON_PRICE);
-                    event.getItem().remove();
-                    event.setCancelled(true);
-                    break;
-                case GOLD_INGOT:
-                    xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_GOLD_PRICE);
-                    event.getItem().remove();
-                    event.setCancelled(true);
-                    break;
-                case EMERALD:
-                    xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_EMERALD_PRICE);
-                    event.getItem().remove();
-                    event.setCancelled(true);
-                    break;
+            else
+            {
+                switch (material) {
+                    case IRON_INGOT:
+                        xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_IRON_PRICE);
+                        event.getItem().remove();
+                        event.setCancelled(true);
+                        break;
+                    case GOLD_INGOT:
+                        xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_GOLD_PRICE);
+                        event.getItem().remove();
+                        event.setCancelled(true);
+                        break;
+                    case EMERALD:
+                        xps = event.getItem().getItemStack().getAmount() * config.getInt(ConfigPath.CURRENCY_EMERALD_PRICE);
+                        event.getItem().remove();
+                        event.setCancelled(true);
+                        break;
+                }
             }
             if(xps != 0) {
                 player.giveExpLevels(xps);

@@ -23,6 +23,9 @@ public class GameEndListener implements Listener {
         // clear inventories
         for (UUID p : event.getAliveWinners()) {
             Bukkit.getPlayer(p).getInventory().clear();
+            if(event.getArena().getConfig().getBoolean("xp")) {
+                Bukkit.getPlayer(p).setExp(0);
+            }
         }
 
         // clear dropped items
