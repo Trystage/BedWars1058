@@ -132,7 +132,9 @@ public class Arena implements IArena {
     private int renderDistance;
 
     private final List<Player> leaving = new ArrayList<>();
-
+    Comparator<ITeam> teamcomparator = (t1, t2) -> {
+        return Integer.compare(t1.getColor().ordinal(), t2.getColor().ordinal());
+    };
     /**
      * Current event, used at scoreboard
      */
@@ -1353,6 +1355,7 @@ public class Arena implements IArena {
 
     @Override
     public List<ITeam> getTeams() {
+        teams.sort(teamcomparator);
         return teams;
     }
 
@@ -2703,4 +2706,6 @@ public class Arena implements IArena {
     public GameStatsHolder getStatsHolder() {
         return gameStats;
     }
+
+
 }
