@@ -222,65 +222,6 @@ public class Interact implements Listener {
                 }
             }
         }
-        if (e.getAction() == Action.LEFT_CLICK_BLOCK){
-            Block b = e.getClickedBlock();
-            if (inHand == null)return;
-            IArena a = Arena.getArenaByPlayer(p);
-            if (a != null){
-                if(a.isPlayer(p)){
-                    if (b.getType() == Material.CHEST){
-                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand) && inHand.getType() !=  Material.SHEARS) {
-                            if (a.isSpectator(p) || a.getRespawnSessions().containsKey(p)) {
-                                e.setCancelled(true);
-                                return;
-                            }
-                            //make it so only team members can open chests while team is alive, and all when is eliminated
-                            ITeam owner = null;
-                            int isRad = a.getConfig().getInt(ConfigPath.ARENA_ISLAND_RADIUS);
-                            for (ITeam t : a.getTeams()) {
-                                if (t.getSpawn().distance(e.getClickedBlock().getLocation()) <= isRad) {
-                                    owner = t;
-                                }
-                            }
-                            if (owner != null) {
-                                if (!owner.isMember(p)) {
-                                    if (!(owner.getMembers().isEmpty() && owner.isBedDestroyed())) {
-                                        e.setCancelled(true);
-                                        p.sendMessage(getMsg(p, Messages.INTERACT_CHEST_CANT_OPEN_TEAM_ELIMINATED));
-                                    }
-                                } else {
-                                    Chest chest = (Chest) b.getState();
-                                    Inventory chestInventory = chest.getInventory();
-                                    Map<Integer, ItemStack> remainingItems = chestInventory.addItem(inHand);
-                                    if (remainingItems.isEmpty()) {
-                                        p.getInventory().setItemInHand(null);
-                                        p.sendMessage("§a你将" + inHand.getAmount() + "个" + inHand.getType().name() + "放入箱子！");
-                                    } else {
-                                        p.sendMessage("§c你的队伍箱子已满");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (b.getType() == Material.ENDER_CHEST){
-                        if (!nms.isSword(inHand) && inHand.getType() != Material.COMPASS && !nms.isTool(inHand) && inHand.getType() !=  Material.SHEARS) {
-                            if (a.isSpectator(p) || a.getRespawnSessions().containsKey(p)) {
-                                e.setCancelled(true);
-                                return;
-                            }
-                            Inventory chestInventory = p.getEnderChest();
-                            Map<Integer, ItemStack> remainingItems = chestInventory.addItem(inHand);
-                            if (remainingItems.isEmpty()) {
-                                p.getInventory().setItemInHand(null);
-                                p.sendMessage("§a你将" + inHand.getAmount() + "个"  + inHand.getType().name() + "放入末影箱！");
-                            } else {
-                                p.sendMessage("§c你的末影箱已满");
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
 
