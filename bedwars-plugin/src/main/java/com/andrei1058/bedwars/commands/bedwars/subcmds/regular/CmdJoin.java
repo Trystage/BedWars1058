@@ -28,6 +28,7 @@ import com.andrei1058.bedwars.api.configuration.ConfigPath;
 import com.andrei1058.bedwars.api.language.Messages;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.SetupSession;
+import com.andrei1058.bedwars.configuration.Permissions;
 import com.andrei1058.bedwars.configuration.Sounds;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -44,6 +45,7 @@ public class CmdJoin extends SubCommand {
         super(parent, name);
         setPriority(19);
         showInList(false);
+        setPermission(Permissions.PERMISSION_JOIN_ARENA);
         setDisplayInfo(com.andrei1058.bedwars.commands.bedwars.MainCommand.createTC("§6 ▪ §7/"+ com.andrei1058.bedwars.commands.bedwars.MainCommand.getInstance().getName()+" join §e<random/ arena/ groupName>",
                 "/"+getParent().getName()+" "+getSubCommandName(), "§fJoin an arena by name or by group.\n§f/bw join random - join random arena."));
     }
