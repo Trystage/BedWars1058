@@ -7,6 +7,7 @@ As from November 1st 2021 BedWars1058 by Andrei Dascălu becomes open source und
 
 [![Crowdin](https://support.crowdin.com/assets/badges/localization-at-white-rounded-bordered@1x.svg)](https://crowdin.com/project/bedwars1058)
 
+**This is a fork of [andrei1058's Bedwars1058](https://github.com/andrei1058/BedWars1058), if you want to replacing it with this version of Bedwars1058,please view [our wiki](https://github.com/Trystage/BedWars1058/wiki)**
 # Description
 BedWars is a mini-game where you have to defend your bed and destroy the others.  
 Once your bed is destroyed, you cannot respawn.
@@ -87,6 +88,7 @@ The waiting-lobby inside the map can be removed once the game starts.
 - you can toggle generator split.
 - custom game rules per map.
 - unlimited iron/ gold / emerald (this one can pe activated from upgrades) generators per team.
+- use xp mode for xp bedwars
 
 ###### Vip Kick | Privilege:
 Players with bw.vip permission are able to join full arenas in starting phase. This will kick a player without bw.vip permission from that game.
