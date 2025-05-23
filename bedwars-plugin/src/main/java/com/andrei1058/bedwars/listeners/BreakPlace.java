@@ -179,6 +179,9 @@ public class BreakPlace implements Listener {
 
                     e.setCancelled(true);
                     Location loc = e.getBlock().getLocation();
+                    if(Arena.getArenaByPlayer(p).getConfig().getDouble(ConfigPath.ARENA_CONFIGURATION_MAX_BUILD_Y) < (loc.clone().getY() + 7)){
+                        return;
+                    }
                     IArena a1 = Arena.getArenaByPlayer(p);
                     TeamColor col = a1.getTeam(p).getColor();
                     double rotation = (p.getLocation().getYaw() - 90.0F) % 360.0F;

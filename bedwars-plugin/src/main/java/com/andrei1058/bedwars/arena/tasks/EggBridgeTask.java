@@ -23,9 +23,11 @@ package com.andrei1058.bedwars.arena.tasks;
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.api.arena.IArena;
 import com.andrei1058.bedwars.api.arena.team.TeamColor;
+import com.andrei1058.bedwars.api.configuration.ConfigPath;
 import com.andrei1058.bedwars.api.events.gameplay.EggBridgeBuildEvent;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.Misc;
+import com.andrei1058.bedwars.configuration.ArenaConfig;
 import com.andrei1058.bedwars.configuration.Sounds;
 import com.andrei1058.bedwars.listeners.EggBridge;
 import org.bukkit.Bukkit;
@@ -87,7 +89,9 @@ public class EggBridgeTask implements Runnable {
         }
 
         if (getPlayer().getLocation().distance(loc) > 2.0D) {
-
+            if(Arena.getArenaByPlayer(getPlayer()).getConfig().getDouble(ConfigPath.ARENA_CONFIGURATION_MAX_BUILD_Y) < loc.clone().getY()){
+                return;
+            }
             Block b2 = loc.clone().subtract(0.0D, 1.5D, 0.0D).getBlock();
             if (!Misc.isBuildProtected(b2.getLocation(), getArena())) {
                 if (b2.getType() == Material.AIR) {
