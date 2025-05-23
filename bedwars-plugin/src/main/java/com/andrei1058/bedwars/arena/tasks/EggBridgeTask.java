@@ -86,9 +86,9 @@ public class EggBridgeTask implements Runnable {
             return;
         }
 
-        if (getPlayer().getLocation().distance(loc) > 4.0D) {
+        if (getPlayer().getLocation().distance(loc) > 2.0D) {
 
-            Block b2 = loc.clone().subtract(0.0D, 2.0D, 0.0D).getBlock();
+            Block b2 = loc.clone().subtract(0.0D, 1.5D, 0.0D).getBlock();
             if (!Misc.isBuildProtected(b2.getLocation(), getArena())) {
                 if (b2.getType() == Material.AIR) {
                     b2.setType(nms.woolMaterial());
@@ -100,7 +100,7 @@ public class EggBridgeTask implements Runnable {
                 }
             }
 
-            Block b3 = loc.clone().subtract(1.0D, 2.0D, 0.0D).getBlock();
+            Block b3 = loc.clone().subtract(1.0D, 1.5D, 0.0D).getBlock();
             if (!Misc.isBuildProtected(b3.getLocation(), getArena())) {
                 if (b3.getType() == Material.AIR) {
                     b3.setType(nms.woolMaterial());
@@ -112,7 +112,7 @@ public class EggBridgeTask implements Runnable {
                 }
             }
 
-            Block b4 = loc.clone().subtract(0.0D, 2.0D, 1.0D).getBlock();
+            Block b4 = loc.clone().subtract(0.0D, 1.5D, 1.0D).getBlock();
             if (!Misc.isBuildProtected(b4.getLocation(), getArena())) {
                 if (b4.getType() == Material.AIR) {
                     b4.setType(nms.woolMaterial());
