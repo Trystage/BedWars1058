@@ -35,6 +35,7 @@ import com.andrei1058.bedwars.api.region.Region;
 import com.andrei1058.bedwars.api.server.ServerType;
 import com.andrei1058.bedwars.api.util.BlastProtectionUtil;
 import com.andrei1058.bedwars.arena.Arena;
+import com.andrei1058.bedwars.arena.tasks.SpongeAnimationTask;
 import com.andrei1058.bedwars.configuration.Sounds;
 import com.andrei1058.bedwars.support.paper.TeleportManager;
 import com.andrei1058.bedwars.popuptower.TowerEast;
@@ -200,6 +201,8 @@ public class BreakPlace implements Listener {
                         new TowerEast(loc, e.getBlockPlaced(), col, p);
                     }
                 }
+            } else if (e.getBlock().getType().equals(Material.SPONGE)){
+                (new SpongeAnimationTask(e.getBlock())).runTaskTimer(plugin, 0L, 8L);
             }
             return;
         }
