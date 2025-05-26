@@ -311,6 +311,9 @@ public class BreakPlace implements Listener {
                                         } else {
                                             e.setCancelled(false);
                                             t.setBedDestroyed(true);
+                                            if(config.getBoolean(ConfigPath.EFFECT_STRIKE)){
+                                                a.getWorld().strikeLightningEffect(e.getBlock().getLocation());
+                                            }
                                             PlayerBedBreakEvent breakEvent;
                                             Bukkit.getPluginManager().callEvent(breakEvent = new PlayerBedBreakEvent(e.getPlayer(), a.getTeam(p), t, a,
                                                     player -> {

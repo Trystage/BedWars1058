@@ -450,6 +450,10 @@ public class DamageDeathMove implements Listener {
                 Sounds.playSound(ConfigPath.SOUNDS_KILL, killer);
             }
 
+            if(killer != null && victimsTeam.isBedDestroyed() && config.getBoolean(ConfigPath.EFFECT_STRIKE)){
+                a.getWorld().strikeLightningEffect(victim.getLocation());
+            }
+
             if (null != playerKillEvent.getMessage()) {
                 for (Player on : a.getPlayers()) {
                     Language lang = Language.getPlayerLanguage(on);
