@@ -23,7 +23,6 @@ package com.andrei1058.bedwars.shop.defaultrestore;
 import com.andrei1058.bedwars.api.arena.GameState;
 import com.andrei1058.bedwars.api.arena.IArena;
 import com.andrei1058.bedwars.api.arena.team.ITeam;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Item;
@@ -48,7 +47,15 @@ public class ShopItemRestoreListener {
     public static class PlayerDrop implements Listener {
         @EventHandler
         public void onDrop(PlayerDropItemEvent e) {
-            if (manageDrop(e.getPlayer(), e.getItemDrop())) e.setCancelled(true);
+            if (manageDrop(e.getPlayer(), e.getItemDrop())) {
+                e.setCancelled(true);
+                if (e.getItemDrop().getType().toString().equalsIgnoreCase("WOOD_SWORD")){
+                    e.getItemDrop().remove();
+                }
+                else{
+                    e.setCancelled(true);
+                }
+            }
         }
     }
 
@@ -65,7 +72,14 @@ public class ShopItemRestoreListener {
     public static class EntityDrop implements Listener {
         @EventHandler
         public void onDrop(EntityDropItemEvent e) {
-            if (manageDrop(e.getEntity(), e.getItemDrop())) e.setCancelled(true);
+            if (manageDrop(e.getEntity(), e.getItemDrop())) {
+                if (e.getItemDrop().getType().toString().equalsIgnoreCase("WOODEN_SWORD")){
+                    e.getItemDrop().remove();
+                }
+                else{
+                    e.setCancelled(true);
+                }
+            }
         }
     }
 
@@ -123,7 +137,7 @@ public class ShopItemRestoreListener {
                 && api.getVersionSupport().isSword(item.getItemStack())) {
             boolean hasSword = false;
             for (ItemStack is : ((Player) player).getInventory()) {
-                if (is == null) continue;
+                if (is == null || is.getType().toString().equalsIgnoreCase(api.getForCurrentVersion("WOOD_SWORD","WOOD_SWORD","WOODEN_SWORD"))) continue;
                 if (api.getVersionSupport().isSword(is)) {
                     if (api.getVersionSupport().getDamage(is) >= api.getVersionSupport().getDamage(item.getItemStack())) {
                         hasSword = true;
@@ -167,6 +181,9 @@ public class ShopItemRestoreListener {
                 if (is == null) continue;
                 if (is.getType() == Material.AIR) continue;
                 if (api.getVersionSupport().isSword(is)) sword = true;
+            }
+            if (api.getVersionSupport().isSword(e.getPlayer().getItemOnCursor())){
+                sword = true;
             }
 
             if (!sword) {
