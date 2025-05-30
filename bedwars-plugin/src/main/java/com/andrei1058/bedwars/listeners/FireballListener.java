@@ -82,7 +82,7 @@ public class FireballListener implements Listener {
                     y = fireballVertical * 1.5; // kb for not jumping
                 }
                 else{
-                    y = y * fireballVertical * 2; // kb for jumping
+                    y = y * fireballVertical * 1.5; // kb for jumping
                 }
             }
 
