@@ -32,6 +32,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDropItemEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -182,8 +183,11 @@ public class ShopItemRestoreListener {
                 if (is.getType() == Material.AIR) continue;
                 if (api.getVersionSupport().isSword(is)) sword = true;
             }
-            if (api.getVersionSupport().isSword(e.getPlayer().getItemOnCursor())){
-                sword = true;
+            ItemStack cursor = e.getPlayer().getItemOnCursor();
+            if (cursor.getType() != Material.AIR) {
+                if (api.getVersionSupport().isSword(cursor)) {
+                    sword = true;
+                }
             }
 
             if (!sword) {
