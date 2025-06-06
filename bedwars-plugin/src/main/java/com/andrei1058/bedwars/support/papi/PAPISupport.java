@@ -123,10 +123,10 @@ public class PAPISupport extends PlaceholderExpansion {
             switch (targetedStat) {
                 case "firstplay":
                     Instant firstPlay = stats.getFirstPlay();
-                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(firstPlay != null ? Timestamp.from(firstPlay) : null);
+                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(firstPlay != null ? Timestamp.from(firstPlay) : "");
                 case "lastplay":
                     Instant lastPlay = stats.getLastPlay();
-                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(lastPlay != null ? Timestamp.from(lastPlay) : null);
+                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(lastPlay != null ? Timestamp.from(lastPlay) : "");
                 case "total_kills":
                     return String.valueOf(stats.getTotalKills());
                 case "kills":
