@@ -18,6 +18,9 @@ public class PlayerPickUpListener implements Listener {
     public void onPickUp(PlayerPickupItemEvent event){
         Player player = event.getPlayer();
         Material material = event.getItem().getItemStack().getType();
+        if(Arena.getArenaByPlayer(player) == null){
+            return;
+        }
         int xps = 0;
         if (Arena.getArenaByPlayer(player).getConfig().getBoolean("xp")) {
             if (nms.materialExperienceBottle().equals(material)){
