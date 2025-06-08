@@ -211,6 +211,7 @@ public class Indonesia extends Language {
         yml.addDefault(Messages.MEANING_VAULT_PLURAL, "$");
         yml.addDefault(Messages.MEANING_XPLEVEL_SINGULAR, "Level");
         yml.addDefault(Messages.MEANING_XPLEVEL_PLURAL, "Levels");
+        yml.addDefault(Messages.INTERACT_REACH_HEIGHT_LIMIT, "{prefix}&cBatas tinggi bangunan telah tercapai!");
         yml.addDefault(Messages.INTERACT_CANNOT_PLACE_BLOCK, "{prefix}&cAnda tidak dapat menempatkan blok di sini!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_BLOCK, "{prefix}&cAnda hanya dapat memecahkan blok yang ditempatkan oleh pemain!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_OWN_BED, "&cAnda tidak dapat menghancurkan kasur Anda sendiri!");

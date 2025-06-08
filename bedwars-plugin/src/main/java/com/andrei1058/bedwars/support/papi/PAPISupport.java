@@ -37,6 +37,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Date;
 
 import static com.andrei1058.bedwars.api.language.Language.getMsg;
 
@@ -123,10 +124,10 @@ public class PAPISupport extends PlaceholderExpansion {
             switch (targetedStat) {
                 case "firstplay":
                     Instant firstPlay = stats.getFirstPlay();
-                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(firstPlay != null ? Timestamp.from(firstPlay) : "");
+                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(firstPlay != null ? Timestamp.from(firstPlay) : new Date());
                 case "lastplay":
                     Instant lastPlay = stats.getLastPlay();
-                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(lastPlay != null ? Timestamp.from(lastPlay) : "");
+                    return new SimpleDateFormat(getMsg(player, Messages.FORMATTING_STATS_DATE_FORMAT)).format(lastPlay != null ? Timestamp.from(lastPlay) : new Date());
                 case "total_kills":
                     return String.valueOf(stats.getTotalKills());
                 case "kills":

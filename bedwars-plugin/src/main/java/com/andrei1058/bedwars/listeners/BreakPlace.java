@@ -482,6 +482,7 @@ public class BreakPlace implements Listener {
                 return;
             }
             if (e.getBlockClicked().getLocation().getBlockY() >= a.getConfig().getInt(ConfigPath.ARENA_CONFIGURATION_MAX_BUILD_Y)) {
+                p.sendMessage(getMsg(p, Messages.INTERACT_REACH_HEIGHT_LIMIT));
                 e.setCancelled(true);
                 return;
             }
