@@ -211,6 +211,7 @@ public class Hindi extends Language {
         yml.addDefault(Messages.MEANING_VAULT_PLURAL, "$");
         yml.addDefault(Messages.MEANING_XPLEVEL_SINGULAR, "Level");
         yml.addDefault(Messages.MEANING_XPLEVEL_PLURAL, "Levels");
+        yml.addDefault(Messages.INTERACT_REACH_HEIGHT_LIMIT, "{prefix}&cNirman unchai seema pahunch gayi!");
         yml.addDefault(Messages.INTERACT_CANNOT_PLACE_BLOCK, "{prefix}&cAp yahape blocks place nahi kar sakte!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_BLOCK, "{prefix}&cAp sirf ek player dvaara place kiye gaye blocks tod sakte hai!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_OWN_BED, "&cAp khudke bistar nahi tod sakte!");

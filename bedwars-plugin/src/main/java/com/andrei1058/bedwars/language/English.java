@@ -211,6 +211,7 @@ public class English extends Language {
         yml.addDefault(Messages.MEANING_VAULT_PLURAL, "$");
         yml.addDefault(Messages.MEANING_XPLEVEL_SINGULAR, "Level");
         yml.addDefault(Messages.MEANING_XPLEVEL_PLURAL, "Levels");
+        yml.addDefault(Messages.INTERACT_REACH_HEIGHT_LIMIT, "{prefix}&cBuild height limit reached!");
         yml.addDefault(Messages.INTERACT_CANNOT_PLACE_BLOCK, "{prefix}&cYou can't place blocks here!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_BLOCK, "{prefix}&cYou can only break blocks placed by a player!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_OWN_BED, "&cYou can't destroy your own bed!");

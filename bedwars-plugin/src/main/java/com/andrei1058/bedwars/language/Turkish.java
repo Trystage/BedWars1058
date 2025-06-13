@@ -212,6 +212,7 @@ public class Turkish extends Language {
         yml.addDefault(Messages.MEANING_VAULT_PLURAL, "₺");
         yml.addDefault(Messages.MEANING_XPLEVEL_SINGULAR, "Level");
         yml.addDefault(Messages.MEANING_XPLEVEL_PLURAL, "Levels");
+        yml.addDefault(Messages.INTERACT_REACH_HEIGHT_LIMIT, "{prefix}&cYükseklik sınırına ulaşıldı!");
         yml.addDefault(Messages.INTERACT_CANNOT_PLACE_BLOCK, "{prefix}&cBuraya blok koyamazsın!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_BLOCK, "{prefix}&cSadece oyuncular tarafından yerleştirilen blokları kırabilirsin!");
         yml.addDefault(Messages.INTERACT_CANNOT_BREAK_OWN_BED, "&cKendi yatağını kıramazsın!");
