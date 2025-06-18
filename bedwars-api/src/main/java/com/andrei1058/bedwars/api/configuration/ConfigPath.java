@@ -348,6 +348,7 @@ public class ConfigPath {
     public static final String LOBBY_VOID_TELEPORT_HEIGHT = "lobby-settings.void-height";
     
     // xp 1058 add:
+    public static final String GENERAL_CONFIGURATION_SAVE_STATS = "save-stats";
     public static final String CURRENCY_IRON_PRICE = "currency.iron";
     public static final String CURRENCY_GOLD_PRICE = "currency.gold";
     public static final String CURRENCY_EMERALD_PRICE = "currency.emerald";

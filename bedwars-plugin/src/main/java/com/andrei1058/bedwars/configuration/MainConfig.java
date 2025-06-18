@@ -218,6 +218,7 @@ public class MainConfig extends ConfigManager {
         yml.addDefault(ConfigPath.CURRENCY_GOLD_PRICE, 10);
         yml.addDefault(ConfigPath.CURRENCY_EMERALD_PRICE, 100);
         yml.addDefault(ConfigPath.EFFECT_STRIKE, true);
+        yml.addDefault(ConfigPath.GENERAL_CONFIGURATION_SAVE_STATS, true);
         yml.options().copyDefaults(true);
         save();
 
