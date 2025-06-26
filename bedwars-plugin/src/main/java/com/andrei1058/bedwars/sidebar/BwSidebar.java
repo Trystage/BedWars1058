@@ -145,7 +145,9 @@ public class BwSidebar implements ISidebar {
             if (null != arena) {
                 if (line.trim().equals("{team}")) {
                     if (arena.getTeams().size() > teamCount) {
-                        ITeam team = arena.getTeams().get(teamCount++);
+                        List<ITeam> teamList = arena.getTeams();
+                        teamList.sort(teamcomparator);
+                        ITeam team = teamList.get(teamCount++);
                         String teamName = team.getDisplayName(language);
                         String teamLetter = String.valueOf(!teamName.isEmpty() ? teamName.charAt(0) : "");
 
@@ -375,8 +377,10 @@ public class BwSidebar implements ISidebar {
                 });
             }
 
+            List<ITeam> teamList = arena.getTeams();
+            teamList.sort(teamcomparator);
             // Dynamic team placeholders
-            for (ITeam currentTeam : arena.getTeams()) {
+            for (ITeam currentTeam : teamList) {
                 boolean isMember = currentTeam.isMember(player) || currentTeam.wasMember(player.getUniqueId());
 
                 providers.add(new PlaceholderProvider("{Team" + currentTeam.getName() + "Status}", () -> {
