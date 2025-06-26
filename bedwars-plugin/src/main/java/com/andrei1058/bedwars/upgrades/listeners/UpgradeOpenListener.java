@@ -44,6 +44,7 @@ public class UpgradeOpenListener implements Listener {
                 e.setCancelled(true);
                 if (a.isPlayer(e.getPlayer())) {
                     UpgradesManager.getMenuForArena(a).open(e.getPlayer());
+                    break;
                 }
             }
         }

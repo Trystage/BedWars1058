@@ -66,6 +66,9 @@ public class BwSidebar implements ISidebar {
         String serverIp = BedWars.config.getString(ConfigPath.GENERAL_CONFIG_PLACEHOLDERS_REPLACEMENTS_SERVER_IP);
         this.registerPersistentPlaceholder(new PlaceholderProvider("{serverIp}", () -> serverIp));
     }
+    Comparator<ITeam> teamcomparator = (t1, t2) -> {
+        return Integer.compare(t1.getColor().ordinal(), t2.getColor().ordinal());
+    };
 
     public void remove() {
         if (handle == null) {
@@ -168,7 +171,9 @@ public class BwSidebar implements ISidebar {
                         .replace("{map_name}", arena.getArenaName())
                         .replace("{group}", arena.getDisplayGroup(player));
 
-                for (ITeam currentTeam : arena.getTeams()) {
+                List<ITeam> teamList = arena.getTeams();
+                teamList.sort(teamcomparator);
+                for (ITeam currentTeam : teamList) {
                     final ChatColor color = currentTeam.getColor().chat();
                     final String teamName = currentTeam.getDisplayName(language);
                     final String teamLetter = String.valueOf(!teamName.isEmpty() ? teamName.charAt(0) : "");
