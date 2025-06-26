@@ -24,6 +24,7 @@ import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.api.arena.GameState;
 import com.andrei1058.bedwars.api.arena.IArena;
 import com.andrei1058.bedwars.api.arena.team.ITeam;
+import com.andrei1058.bedwars.api.configuration.ConfigPath;
 import com.andrei1058.bedwars.api.events.gameplay.GameEndEvent;
 import com.andrei1058.bedwars.api.events.player.PlayerBedBreakEvent;
 import com.andrei1058.bedwars.api.events.player.PlayerKillEvent;
@@ -189,7 +190,9 @@ public class StatsListener implements Listener {
 //        }
 
         //save or replace stats for player - run later because PlayerKillEvent is triggered after PlayerLeaveArenaEvent
-        Bukkit.getScheduler().runTaskLaterAsynchronously(BedWars.plugin, () -> BedWars.getRemoteDatabase().saveStats(playerStats), 10L);
+        if (BedWars.config.getBoolean(ConfigPath.GENERAL_CONFIGURATION_SAVE_STATS)) {
+            Bukkit.getScheduler().runTaskLaterAsynchronously(BedWars.plugin, () -> BedWars.getRemoteDatabase().saveStats(playerStats), 10L);
+        }
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
