@@ -494,6 +494,7 @@ public class Arena implements IArena {
             p.setFlying(false);
             p.setAllowFlight(false);
             p.setHealth(20);
+            p.setExp(0);
             for (Player on : players) {
                 on.sendMessage(
                         getMsg(on, Messages.COMMAND_JOIN_PLAYER_JOIN_MSG)
