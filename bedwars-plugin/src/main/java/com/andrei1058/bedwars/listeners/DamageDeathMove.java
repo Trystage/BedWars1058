@@ -491,6 +491,7 @@ public class DamageDeathMove implements Listener {
 
             // send respawn packet
             Bukkit.getScheduler().runTaskLater(plugin, () -> victim.spigot().respawn(), 3L);
+            Bukkit.getScheduler().runTaskLater(plugin, () -> victim.setLevel(xp), 10L);
 
             // reset last damager
             LastHit lastHit = LastHit.getLastHit(victim);
@@ -505,7 +506,7 @@ public class DamageDeathMove implements Listener {
                 }
                 victimsTeam.getGenerators().clear();
             }
-            victim.setLevel(xp);
+
         }
     }
 
