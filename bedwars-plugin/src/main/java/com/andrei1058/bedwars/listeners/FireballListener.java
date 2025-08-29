@@ -74,12 +74,7 @@ public class FireballListener implements Listener {
             double y = normalizedVector.getY();
             if(y < 0 ) y += 1.5;
             if(location.getY() > player.getLocation().getY() + 1){
-                if(location.getY() > player.getLocation().getY() + 1.5){
-                    y = 0; // kb for lower than fireballs
-                }
-                else{
-                    y = fireballVertical; // kb for lower than fireballs
-                }
+                y = fireballVertical * 1.2;
                 horizontalVector.multiply(1.2);
             }
             else{
