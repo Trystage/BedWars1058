@@ -125,7 +125,7 @@ public class MainCommand extends BukkitCommand implements ParentCommand {
                         Bukkit.dispatchCommand(s, getName() + " cmds");
                     } else {
                         s.sendMessage("");
-                        s.sendMessage("§8§l" + dot + " §6" + plugin.getDescription().getName() + " v" + plugin.getDescription().getVersion() + " §7- §c Admin Commands");
+                        s.sendMessage("§8§l" + dot + " §6" + plugin.getDescription().getName() + " v" + plugin.getDescription().getVersion() + "-Atri Shop Ediiton"+ " §7- §c Admin Commands");
                         s.sendMessage("");
                         sendSubCommands((Player) s);
                     }
