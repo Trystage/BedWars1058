@@ -51,6 +51,7 @@ public class QuitAndTeleportListener implements Listener {
         Player p = e.getPlayer();
         // Remove from arena
         IArena a = Arena.getArenaByPlayer(p);
+        p.setExp(0);
         if (a != null) {
             if (a.isPlayer(p)) {
                 a.removePlayer(p, true);
