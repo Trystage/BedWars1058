@@ -70,6 +70,11 @@
             <id>papermc</id>
             <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+        <repository>
+            <id>diogotc-repository-releases</id>
+            <name>Diogo Correia's Releases Repository</name>
+            <url>https://repo.diogotc.com/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -357,6 +362,12 @@
             <groupId>net.md-5</groupId>
             <artifactId>bungeecord-chat</artifactId>
             <version>1.18-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.rexcantor64.triton</groupId>
+            <artifactId>triton-api</artifactId>
+            <version>3.12.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
