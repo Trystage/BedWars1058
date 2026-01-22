@@ -22,6 +22,7 @@ package com.andrei1058.bedwars.listeners.joinhandler;
 
 import com.andrei1058.bedwars.BedWars;
 import com.andrei1058.bedwars.api.language.Language;
+import com.andrei1058.bedwars.support.triton.Triton;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -51,7 +52,10 @@ public class JoinHandlerCommon implements Listener {
 
     @EventHandler
     public void requestLanguage(AsyncPlayerPreLoginEvent e) {
-        String iso = BedWars.getRemoteDatabase().getLanguage(e.getUniqueId());
+        String iso = Triton.getTriton().getLanguage(e.getUniqueId()) == null ? BedWars.getRemoteDatabase().getLanguage(e.getUniqueId()) : Triton.getTriton().getLanguage(e.getUniqueId());
+        if (Triton.getTriton().getLanguage(e.getUniqueId()) == null){
+            BedWars.debug(e.getUniqueId().toString() + " has null Triton Language");
+        }
         Bukkit.getScheduler().runTask(plugin, () -> Language.setPlayerLanguage(e.getUniqueId(), iso));
     }
 

@@ -28,6 +28,7 @@ import com.andrei1058.bedwars.api.language.Messages;
 import com.andrei1058.bedwars.arena.Arena;
 import com.andrei1058.bedwars.arena.SetupSession;
 import com.andrei1058.bedwars.commands.bedwars.MainCommand;
+import com.andrei1058.bedwars.support.triton.Triton;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -53,6 +54,9 @@ public class CmdLang extends SubCommand {
         if (s instanceof ConsoleCommandSender) return false;
         Player p = (Player) s;
         if (Arena.getArenaByPlayer(p) != null) return false;
+        if (Triton.getTriton() instanceof Triton.withTriton){
+            p.sendMessage(getMsg(p, Messages.COMMAND_LANG_USAGE_DENIED));
+        }
         if (args.length == 0) {
             p.sendMessage(getMsg(p, Messages.COMMAND_LANG_LIST_HEADER));
             for (Language l : Language.getLanguages()) {
