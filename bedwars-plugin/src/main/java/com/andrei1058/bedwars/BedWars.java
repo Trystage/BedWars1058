@@ -76,6 +76,7 @@ import com.andrei1058.bedwars.support.party.PAF;
 import com.andrei1058.bedwars.support.party.PAFBungeecordRedisApi;
 import com.andrei1058.bedwars.support.party.PartiesAdapter;
 import com.andrei1058.bedwars.support.preloadedparty.PrePartyListener;
+import com.andrei1058.bedwars.support.triton.Triton;
 import com.andrei1058.bedwars.support.vault.*;
 import com.andrei1058.bedwars.support.vipfeatures.VipFeatures;
 import com.andrei1058.bedwars.support.vipfeatures.VipListeners;
@@ -117,7 +118,6 @@ public class BedWars extends JavaPlugin {
     public static VersionSupport nms;
 
     public static boolean isPaper = false;
-
     private static Party party = new NoParty();
     private static Chat chat = new NoChat();
     protected static Level level;
@@ -404,6 +404,12 @@ public class BedWars extends JavaPlugin {
             out.info("Hooked into PlaceholderAPI support!");
             new PAPISupport().register();
             SupportPAPI.setSupportPAPI(new SupportPAPI.withPAPI());
+        }
+
+        /* Triton Support */
+        if (Bukkit.getPluginManager().getPlugin("Triton") != null) {
+            out.info("Hooked into Triton support!");
+            Triton.setTriton(new Triton.withTriton());
         }
         /*
          * Vault support

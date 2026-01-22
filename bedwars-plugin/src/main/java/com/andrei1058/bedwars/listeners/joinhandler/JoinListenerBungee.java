@@ -32,6 +32,7 @@ import com.andrei1058.bedwars.configuration.Sounds;
 import com.andrei1058.bedwars.lobbysocket.LoadedUser;
 import com.andrei1058.bedwars.support.paper.TeleportManager;
 import com.andrei1058.bedwars.support.preloadedparty.PreLoadedParty;
+import com.andrei1058.bedwars.support.triton.Triton;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -148,6 +149,12 @@ public class JoinListenerBungee implements Listener {
         } else {
             // The player joined using BedWarsProxy
             Language playerLang = proxyUser.getLanguage() == null ? Language.getDefaultLanguage() : proxyUser.getLanguage();
+
+            String iso = Triton.getTriton().getLanguage(p.getUniqueId());
+            playerLang = Language.getLang(iso) == null ? playerLang : Language.getLang(iso);
+            if (Triton.getTriton().getLanguage(p.getUniqueId()) == null){
+                BedWars.debug(p.getUniqueId().toString() + " has null Triton Language");
+            }
 
             // Check if has an arena to ReJoin
             ReJoin reJoin = ReJoin.getPlayer(p);
